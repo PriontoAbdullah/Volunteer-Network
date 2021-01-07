@@ -1,14 +1,12 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../../App';
-import volunteerTasks from '../../fakeData/volunteerTasks';
 import Card from './Card';
 import './Home.css';
+
 
 const Home = () => {
 	const { user, data } = useContext(UserContext);
 	const [ mainData, setMainData ] = data;
-
-	setMainData(volunteerTasks);
 
 	return (
 		<main className="vn-home pt-5 mt-2">
