@@ -4,6 +4,8 @@ import './App.css';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
+import Register from './components/Login/Register';
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import volunteerTasks from './fakeData/volunteerTasks';
 
 export const UserContext = createContext();
@@ -35,6 +37,12 @@ function App() {
 					<Route path="/login">
 						<Login />
 					</Route>
+					<Route path="/register">
+						<Register />
+					</Route>
+					<PrivateRoute path="/events/:id">
+						<Register />
+					</PrivateRoute>
 				</Switch>
 			</Router>
 		</UserContext.Provider>

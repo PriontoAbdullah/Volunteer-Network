@@ -7,7 +7,7 @@ import './Header.css';
 
 const Header = () => {
 	const { user } = useContext(UserContext);
-	const [ loggedInUser ] = user;
+	const [ loggedInUser, setLoggedInUser ] = user;
 
 	return (
 		<header className="px-lg-5 px-0">
@@ -62,9 +62,16 @@ const Header = () => {
 							</li>
 						)}
 						{loggedInUser.isLoggedIn && (
-							<li className="nav-item user">
+							<li className="nav-item user pl-2">
 								<img src={userIcon} alt="" />
 								{loggedInUser.name ? loggedInUser.name.split(' ').slice(0, 1) : 'User'}
+							</li>
+						)}
+						{loggedInUser.isLoggedIn && (
+							<li className="nav-item ">
+								<Link className="nav-link" to="/" onClick={() => setLoggedInUser({})}>
+								Logout
+								</Link>
 							</li>
 						)}
 					</ul>
