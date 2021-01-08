@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { UserContext } from '../../App';
 import Card from './Card';
 import './Home.css';
@@ -8,7 +8,12 @@ const Home = () => {
 	const { user, data } = useContext(UserContext);
 	const [ mainData, setMainData ] = data;
 
-	
+		// Get All Volunteer Tasks
+		useEffect(() => {
+			fetch('http://localhost:5000/volunteerTasks').then((res) => res.json()).then((data) => {
+				setMainData(data);
+			});
+		}, [setMainData]);
 
 	return (
 		<main className="vn-home pt-5 mt-2">

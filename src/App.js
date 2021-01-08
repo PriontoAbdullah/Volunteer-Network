@@ -1,6 +1,7 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import EventTasks from './components/Events/EventTasks';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
@@ -13,13 +14,6 @@ export const UserContext = createContext();
 function App() {
 	const [ loggedInUser, setLoggedInUser ] = useState({});
 	const [ mainData, setMainData ] = useState([]);
-
-	// Get All Volunteer Tasks
-	useEffect(() => {
-		fetch('http://localhost:5000/volunteerTasks').then((res) => res.json()).then((data) => {
-			setMainData(data);
-		});
-	}, [mainData.length]);
 
 	const globalStates = {
 		user: [ loggedInUser, setLoggedInUser ],
@@ -45,6 +39,9 @@ function App() {
 					</PrivateRoute>
 					<Route exact path="/events">
 						<EventTasks />
+					</Route>
+					<Route path="/admin">
+						<AdminDashboard />
 					</Route>
 				</Switch>
 			</Router>
