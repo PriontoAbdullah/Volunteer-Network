@@ -8,6 +8,8 @@ const Home = () => {
 	const { user, data } = useContext(UserContext);
 	const [ mainData, setMainData ] = data;
 
+	
+
 	return (
 		<main className="vn-home pt-5 mt-2">
 			<div className="container text-center">

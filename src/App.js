@@ -5,8 +5,7 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Register from './components/Login/Register';
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import volunteerTasks from './fakeData/volunteerTasks';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 export const UserContext = createContext();
 
@@ -14,12 +13,12 @@ function App() {
 	const [ loggedInUser, setLoggedInUser ] = useState({});
 	const [ mainData, setMainData ] = useState([]);
 
-	useEffect(
-		() => {
-			setMainData(volunteerTasks);
-		},
-		[ mainData ]
-	);
+	// Get All Volunteer Tasks
+	useEffect(() => {
+		fetch('http://localhost:5000/volunteerTasks').then((res) => res.json()).then((data) => {
+			setMainData(data);
+		});
+	}, [mainData.length]);
 
 	const globalStates = {
 		user: [ loggedInUser, setLoggedInUser ],

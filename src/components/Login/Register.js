@@ -28,7 +28,21 @@ const Register = () => {
 
 		const newVolunteer = { ...volunteer };
 
-        setVolunteer(newVolunteer);
+		fetch("http://localhost:5000/registerVolunteer", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(newVolunteer),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log("task added ", data);
+				if (data) {
+					history.push("/events");
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	const handleInputValue = (e) => {
