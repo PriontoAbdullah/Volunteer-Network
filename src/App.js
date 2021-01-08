@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+import EventTasks from './components/Events/EventTasks';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
@@ -42,6 +43,9 @@ function App() {
 					<PrivateRoute path="/events/:id">
 						<Register />
 					</PrivateRoute>
+					<Route exact path="/events">
+						<EventTasks />
+					</Route>
 				</Switch>
 			</Router>
 		</UserContext.Provider>
