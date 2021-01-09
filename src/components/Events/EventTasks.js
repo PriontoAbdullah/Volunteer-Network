@@ -12,7 +12,7 @@ const EventTasks = () => {
 	// Filtering tasks for an user
 	useEffect(
 		() => {
-			fetch(`http://localhost:5000/events?email=${loggedInUser.email}`)
+			fetch(`https://volunteer-network-71.herokuapp.com/events?email=${loggedInUser.email}`)
 				.then((res) => res.json())
 				.then((data) => {
 					setUserTasks([ ...data ]);
@@ -24,7 +24,7 @@ const EventTasks = () => {
 
 	// Delete a task
 	const deleteTask = (id) => {
-		fetch(`http://localhost:5000/deleteTask/${id}`, {
+		fetch(`https://volunteer-network-71.herokuapp.com/deleteTask/${id}`, {
 			method: 'DELETE'
 		})
 			.then((res) => res.json())

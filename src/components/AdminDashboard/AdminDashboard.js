@@ -18,7 +18,7 @@ const AdminDashboard = () => {
 	useEffect(
 		() => {
 			if (toggleView.showList) {
-				fetch('http://localhost:5000/loadVolunteerList')
+				fetch('https://volunteer-network-71.herokuapp.com/loadVolunteerList')
 					.then((res) => res.json())
 					.then((data) => setVolunteerList(data));
 			}
@@ -29,7 +29,7 @@ const AdminDashboard = () => {
 	// Delete a registered user
 	const handleDeleteEvent = (id) => {
 		console.log('delete clicked', id);
-		fetch(`http://localhost:5000/admin/deleteTask/${id}`, {
+		fetch(`https://volunteer-network-71.herokuapp.com/admin/deleteTask/${id}`, {
 			method: 'DELETE'
 		})
 			.then((res) => res.json())

@@ -28,7 +28,7 @@ const Register = () => {
 
 		const newVolunteer = { ...volunteer };
 
-		fetch("http://localhost:5000/registerVolunteer", {
+		fetch("https://volunteer-network-71.herokuapp.com/registerVolunteer", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(newVolunteer),

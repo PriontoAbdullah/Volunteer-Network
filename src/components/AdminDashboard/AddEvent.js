@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 
 const AddEvent = () => {
-	const history = useHistory();
 
 	const [ status, setStatus ] = useState(false);
 
@@ -17,7 +15,7 @@ const AddEvent = () => {
 	// Add an event task
 	const handleAddEvent = (e) => {
 		e.preventDefault();
-		fetch('http://localhost:5000/admin/addEvent', {
+		fetch('https://volunteer-network-71.herokuapp.com/admin/addEvent', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(addTask)
@@ -29,7 +27,6 @@ const AddEvent = () => {
 			})
 			.catch((err) => console.log(err));
 
-		history.push('/');
 	};
 
 	// Input fields handler
